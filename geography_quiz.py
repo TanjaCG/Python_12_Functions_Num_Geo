@@ -40,4 +40,4 @@ while True:
         print("Bye!")
         break
     else:
-        print(quiz())
+        quiz()
