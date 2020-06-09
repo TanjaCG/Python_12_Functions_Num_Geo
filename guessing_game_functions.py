@@ -1,3 +1,4 @@
+
 import random
 import json
 import datetime
@@ -44,10 +45,13 @@ def game_play():
 def get_scores():
     with open("score_list.txt", "r") as score_file:
         score_list = json.loads(score_file.read())
+        return score_list
 
-        sorted_score_list = sorted(score_list, key=lambda i: i['attempts'])[:3]
 
-        for score_dict in sorted_score_list:
-            print(str(score_dict["attempts"]) + " attempts, date: " + score_dict.get("datetime") +
-                  ", player name: " + score_dict.get("player name") +
-                  ", wrong guesses: " + str(score_dict.get("wrong_guess")))
+def get_top_scores():
+    score_list_ = get_scores()
+    sorted_score_list = sorted(score_list_, key=lambda i: i['attempts'])[:3]
+    for score_dict in sorted_score_list:
+        print(str(score_dict["attempts"]) + " attempts, date: " + score_dict.get("datetime") +
+              ", player name: " + score_dict.get("player name") +
+              ", wrong guesses: " + str(score_dict.get("wrong_guess")))
